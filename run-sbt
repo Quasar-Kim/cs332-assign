@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export TERM=xterm-color
+sbt -java-home /usr/lib/jvm/java-8-openjdk
