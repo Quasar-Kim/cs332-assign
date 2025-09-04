@@ -1,0 +1,7 @@
+.vscode/
+.metals/
+target/
+lib_managed
+*.class
+*.log
+
