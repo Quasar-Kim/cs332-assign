@@ -4,4 +4,8 @@ target/
 lib_managed
 *.class
 *.log
+.classpath
+.settings
+.project
+
 
