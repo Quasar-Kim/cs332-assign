@@ -139,4 +139,26 @@ class FunSetSuite extends FunSuite {
       assert(!contains(s, 3), "filter should not contain 3")
     }
   }
+
+  test("forall checks whether all elements satisfy given predicate") {
+    new TestSets {
+      assert(!forall(s12, (x: Int) => x < 2), "s12 should not satisfy x < 2")
+      assert(forall(s12, (x: Int) => x <= 2), "s12 should satisfy x <= 2")
+    }    
+  }
+
+  test("exists checks whether at least one element satisfy given predicate") {
+    new TestSets {
+      assert(exists(s12, (x: Int) => x < 2), "s12 should have element that satisfy x < 2")
+      assert(!exists(s12, (x: Int) => x > 2), "s12 should not have element that satisfy x > 2")
+    }
+  }
+
+  test("map should transform each element of set") {
+    new TestSets {
+      val s = map(s1, _ + 1)
+      assert(!contains(s, 1), "transformed set should not contain 1")
+      assert(contains(s, 2), "transformed set should contain 2")
+    }
+  }
 }
