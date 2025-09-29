@@ -91,7 +91,7 @@ object Huffman {
    * of a leaf is the frequency of the character.
    */
   def makeOrderedLeafList(freqs: List[(Char, Int)]): List[Leaf] =
-    freqs.map((item: (Char, Int)) => Leaf(item._1, item._2))
+    freqs.map((item: (Char, Int)) => Leaf(item._1, item._2)).sortBy(weight)
 
   /**
    * Checks whether the list `trees` contains only one single code tree.
