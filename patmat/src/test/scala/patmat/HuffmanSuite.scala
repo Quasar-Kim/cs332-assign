@@ -13,12 +13,12 @@ class HuffmanSuite extends FunSuite {
     val t1 = Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5)
     val t2 = Fork(Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5), Leaf('d',4), List('a','b','d'), 9)
     val codeTree = Fork(
-      Leaf('c', 1),
-      Fork(Leaf('a', 2), Leaf('b', 1), List('a', 'b'), 3),
-      List('c', 'a', 'b'),
+      Fork(Leaf('b', 1), Leaf('c', 1), List('b', 'c'), 2),
+      Leaf('a', 2),
+      List('b', 'c', 'a'),
       4
     )
-    val encoded = List(0, 1, 0, 1, 0, 1, 1)
+    val encoded = List(0, 1, 1, 1, 0, 0)
     val decoded = List('c', 'a', 'a', 'b')
   }
 
@@ -44,7 +44,9 @@ class HuffmanSuite extends FunSuite {
   }
 
   test("makeOrderedLeafList for some frequency table") {
-    assert(makeOrderedLeafList(List(('t', 2), ('e', 1), ('x', 3))) === List(Leaf('t', 2), Leaf('e',1), Leaf('x',3)))
+    assert(makeOrderedLeafList(
+      List(('t', 2), ('e', 1), ('x', 3))) === List(Leaf('e', 1), Leaf('t', 2), Leaf('x',3))
+    )
   }
 
   test("singleton") {
@@ -100,9 +102,9 @@ class HuffmanSuite extends FunSuite {
     new TestTrees {
       val table = convert(codeTree)
       val lookup = codeBits(table)_
-      assert(lookup('a') == List(1, 0))
-      assert(lookup('b') == List(1, 1))
-      assert(lookup('c') == List(0))
+      assert(lookup('a') == List(1))
+      assert(lookup('b') == List(0, 0))
+      assert(lookup('c') == List(0, 1))
     }
   }
 
