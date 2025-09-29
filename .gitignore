@@ -1,11 +1,14 @@
 .vscode/
 .metals/
+.bloop/
+.bsp/
+.settings/
 target/
-lib_managed
+lib_managed/
+
 *.class
 *.log
-.classpath
-.settings
 .project
-
+.classpath
+metals.sbt
 
